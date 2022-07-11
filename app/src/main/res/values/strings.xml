@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SIS</string>
+    <string name="icon">Icon</string>
+    <string name="splashscreen">SplashScreen</string>
+    <string name="log_out">Log out</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="signed">SIGNED</string>
+    <string name="already_have_an_account_login">Alredy have an account Login</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_sign_in">Don\'t have an account Sign In</string>
+    <string name="menu_2">Log Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="this_activity">This Activity</string>
+    <string name="search">Search</string>
+    <string name="logged">You Logged as</string>
+    <string name="image_item">image item</string>
+    <string name="data_santri">Data Santri</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "437723586851",
+    "project_id": "sistem-informasi-santri-557a7",
+    "storage_bucket": "sistem-informasi-santri-557a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437723586851:android:3c5fac88af7b2144c5ec96",
+        "android_client_info": {
+          "package_name": "com.example.sis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437723586851-9lb6q46t7a3g56mbmd0helnret39s0pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGgoGAUDAi6OPG1O1kU3DcYSV3gnVJM_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437723586851-9lb6q46t7a3g56mbmd0helnret39s0pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
