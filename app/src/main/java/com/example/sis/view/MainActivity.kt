@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu2 -> {
+            R.id.menu -> {
                 startActivity(Intent(this, MenuActivity::class.java))
                 return true
             }
