@@ -27,18 +27,11 @@ class SantriActivity : AppCompatActivity() {
         setContentView(activitySantriBinding.root)
 
         supportActionBar?.hide()
-
         activitySantriBinding.listSantri
 
-//        showDataSantri()
         showRecyclerList()
         showLoading(true)
     }
-
-//    private fun showDataSantri() {
-//
-//
-//    }
 
     private fun showRecyclerList() {
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
