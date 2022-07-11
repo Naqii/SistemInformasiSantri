@@ -48,33 +48,33 @@ class SantriActivity : AppCompatActivity() {
         }
         santriAdapter = SantriAdapter(ArrayList())
         activitySantriBinding.listSantri.adapter = santriAdapter
-//        santriViewModel.getSantri().observe(this) { response ->
-//            when (response.status) {
-//                StatusResponse.SUCCESS -> {
-//                    showLoading(false)
-//                    val data = response.body?.santriResponse
-//                    if (response.body != null) {
-//                        santriAdapter = data?.let { SantriAdapter(it) }!!
-//                    }
-//                }
-//                StatusResponse.EMPTY -> {
-//                    showLoading(false)
-//                    santriAdapter = SantriAdapter(ArrayList())
-//                    activitySantriBinding.listSantri.adapter = santriAdapter
-//                }
-//                StatusResponse.ERROR -> {
-//                    showLoading(false)
-//                    Toast.makeText(
-//                        this,
-//                        "An error occured, Please try again later.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//                else -> {
-//                    showLoading(true)
-//                }
-//            }
-//        }
+        santriViewModel.getSantri().observe(this) { response ->
+            when (response.status) {
+                StatusResponse.SUCCESS -> {
+                    showLoading(false)
+                    val data = response.body?.santriResponse
+                    if (response.body != null) {
+                        santriAdapter = data?.let { SantriAdapter(it) }!!
+                    }
+                }
+                StatusResponse.EMPTY -> {
+                    showLoading(false)
+                    santriAdapter = SantriAdapter(ArrayList())
+                    activitySantriBinding.listSantri.adapter = santriAdapter
+                }
+                StatusResponse.ERROR -> {
+                    showLoading(false)
+                    Toast.makeText(
+                        this,
+                        "An error occured, Please try again later.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    showLoading(true)
+                }
+            }
+        }
         //on click
     }
 
