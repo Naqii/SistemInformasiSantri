@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sis.view.MainActivity
 import com.example.sis.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth

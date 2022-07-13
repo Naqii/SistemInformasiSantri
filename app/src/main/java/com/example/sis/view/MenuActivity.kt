@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sis.databinding.ActivityMenuBinding
 import com.example.sis.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth

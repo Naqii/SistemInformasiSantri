@@ -1,7 +1,6 @@
 package com.example.sis.viewmodel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.SantriResponse

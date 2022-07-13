@@ -12,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sis.R
 import com.example.sis.view.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
 //import com.google.firebase.auth.FirebaseAuth
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 

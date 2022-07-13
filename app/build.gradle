@@ -4,7 +4,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -83,9 +83,16 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
     //dagger
-    implementation 'com.google.dagger:hilt-android:2.40.5'
-    annotationProcessor 'com.google.dagger:hilt-android-compiler:2.38.1'
+    //noinspection GradleDependency
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     //byViewModels
     implementation 'androidx.activity:activity-ktx:1.5.0'
+
+    //WorkManager
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
 }

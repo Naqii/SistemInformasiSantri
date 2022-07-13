@@ -13,7 +13,9 @@ import com.example.sis.R
 import com.example.sis.databinding.ActivityMainBinding
 import com.example.sis.view.santri.SantriActivity
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
