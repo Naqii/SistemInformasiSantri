@@ -8,7 +8,8 @@ import com.example.sis.R
 import com.example.sis.data.api.SantriResponseItem
 import com.example.sis.databinding.ItemListBinding
 
-class SantriAdapter(private val listSantri: List<SantriResponseItem>) : RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
+class SantriAdapter(private val listSantri: List<SantriResponseItem>) :
+    RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
 
     inner class SantriViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding  = ItemListBinding.bind(itemView)

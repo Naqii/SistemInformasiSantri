@@ -2,6 +2,7 @@ package com.example.sis.view.santri
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sis.R
@@ -24,8 +26,7 @@ class SantriActivity : AppCompatActivity() {
     private val santriViewModel: SantriViewModel by viewModels()
     lateinit var binding: ActivitySantriBinding
 
-    private lateinit var santriAdapter: SantriAdapter
-    private lateinit var rcSantri: RecyclerView
+    private lateinit var adapter: SantriAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +36,6 @@ class SantriActivity : AppCompatActivity() {
         supportActionBar?.title = TITLE
         binding.listSantri
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        binding.listSantri
 
         showRecyclerList()
         showLoading(true)
@@ -73,28 +72,27 @@ class SantriActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-//        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            activitySantriBinding.listSantri.layoutManager = GridLayoutManager(this, 2)
-//        } else {
-//            activitySantriBinding.listSantri.layoutManager = LinearLayoutManager(this)
-//        }
-        binding.listSantri.layoutManager = LinearLayoutManager(this)
-        santriAdapter = SantriAdapter(ArrayList())
-        binding.listSantri.adapter = santriAdapter
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.listSantri.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            binding.listSantri.layoutManager = LinearLayoutManager(this)
+        }
+        adapter = SantriAdapter(ArrayList())
+        binding.listSantri.adapter = adapter
         santriViewModel.getSantri().observe(this) { response ->
             when (response.status) {
                 StatusResponse.SUCCESS -> {
                     showLoading(false)
                     val data = response.body?.santriResponse
                     if (response.body != null) {
-                        santriAdapter = data?.let { SantriAdapter(it) }!!
-                        binding.listSantri.adapter = santriAdapter
+                        adapter = data?.let { SantriAdapter(it) }!!
+                        binding.listSantri.adapter = adapter
                     }
                 }
                 StatusResponse.EMPTY -> {
                     showLoading(false)
-                    santriAdapter = SantriAdapter(ArrayList())
-                    binding.listSantri.adapter = santriAdapter
+                    adapter = SantriAdapter(ArrayList())
+                    binding.listSantri.adapter = adapter
                 }
                 StatusResponse.ERROR -> {
                     showLoading(false)
