@@ -17,4 +17,7 @@
     <string name="logged">You Logged as</string>
     <string name="image_item">image item</string>
     <string name="data_santri">Data Santri</string>
+    <string name="data_nis">NIS</string>
+    <string name="data_telp">Telephone</string>
+    <string name="data_address">Address</string>
 </resources>

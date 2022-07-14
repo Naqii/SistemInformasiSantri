@@ -8,15 +8,21 @@ import com.example.sis.R
 import com.example.sis.data.api.SantriResponseItem
 import com.example.sis.databinding.ItemListBinding
 
-class SantriAdapter(private val listSantri: List<SantriResponseItem>) :
-    RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
-    inner class SantriViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding  = ItemListBinding.bind(view)
+class SantriAdapter(private val listSantri: List<SantriResponseItem>) : RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
+
+    inner class SantriViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val binding  = ItemListBinding.bind(itemView)
         fun bind(dataSantri: SantriResponseItem) {
             with(binding) {
+                tvNis.text = dataSantri.nis
                 tvUsername.text = dataSantri.name
-                //on click
+                tvTelp.text = dataSantri.telp
+                tvAddress.text = dataSantri.address
             }
+            //on click
+//            itemView.setOnClickListener {
+//
+//            }
         }
     }
 

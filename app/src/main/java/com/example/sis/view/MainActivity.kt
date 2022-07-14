@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.santri.setOnClickListener{
             startActivity(Intent(this, SantriActivity::class.java))
         }
-
     }
 
     //Option Menu in Action Bar
