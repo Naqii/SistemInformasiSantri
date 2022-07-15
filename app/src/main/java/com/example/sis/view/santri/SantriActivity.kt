@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.sis.R
 import com.example.sis.adapter.SantriAdapter
 import com.example.sis.data.api.StatusResponse
@@ -34,7 +33,7 @@ class SantriActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.title = TITLE
-        binding.listSantri
+        binding.rvSantri
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         showRecyclerList()
@@ -73,12 +72,11 @@ class SantriActivity : AppCompatActivity() {
 
     private fun showRecyclerList() {
         if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding.listSantri.layoutManager = GridLayoutManager(this, 2)
+            binding.rvSantri.layoutManager = GridLayoutManager(this, 2)
         } else {
-            binding.listSantri.layoutManager = LinearLayoutManager(this)
+            binding.rvSantri.layoutManager = LinearLayoutManager(this)
         }
         adapter = SantriAdapter(ArrayList())
-        binding.listSantri.adapter = adapter
         santriViewModel.getSantri().observe(this) { response ->
             when (response.status) {
                 StatusResponse.SUCCESS -> {
@@ -86,13 +84,13 @@ class SantriActivity : AppCompatActivity() {
                     val data = response.body?.santriResponse
                     if (response.body != null) {
                         adapter = data?.let { SantriAdapter(it) }!!
-                        binding.listSantri.adapter = adapter
+                        binding.rvSantri.adapter = adapter
                     }
                 }
                 StatusResponse.EMPTY -> {
                     showLoading(false)
                     adapter = SantriAdapter(ArrayList())
-                    binding.listSantri.adapter = adapter
+                    binding.rvSantri.adapter = adapter
                 }
                 StatusResponse.ERROR -> {
                     showLoading(false)
@@ -113,10 +111,10 @@ class SantriActivity : AppCompatActivity() {
     private fun showLoading(state: Boolean) {
         if (state) {
             binding.progressBar.visibility = View.VISIBLE
-            binding.listSantri.visibility = View.GONE
+            binding.rvSantri.visibility = View.GONE
         } else {
             binding.progressBar.visibility = View.GONE
-            binding.listSantri.visibility = View.VISIBLE
+            binding.rvSantri.visibility = View.VISIBLE
         }
     }
 

@@ -33,11 +33,12 @@
 
         <TextView
             android:id="@+id/tv_nis"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/data_nis"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.18"
             app:layout_constraintStart_toEndOf="@+id/foto"
@@ -46,7 +47,7 @@
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/data_santri"
             android:textSize="16sp"
@@ -57,7 +58,7 @@
 
         <TextView
             android:id="@+id/tv_telp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/data_telp"
             android:textSize="16sp"
@@ -68,7 +69,7 @@
 
         <TextView
             android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/data_address"
             android:textSize="16sp"
