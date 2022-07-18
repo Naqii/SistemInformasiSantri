@@ -8,22 +8,27 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sis.R
+import com.example.sis.adapter.SantriAdapter
+import com.example.sis.data.api.StatusResponse
 import com.example.sis.databinding.ActivityMainBinding
 import com.example.sis.view.santri.SantriActivity
+import com.example.sis.viewmodel.SantriViewModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-//    private val santriViewModel: SantriViewModel by viewModels()
+    private val santriViewModel: SantriViewModel by viewModels()
     private lateinit var mAuth: FirebaseAuth
     private lateinit var activityMainBinding: ActivityMainBinding
 
-//    private lateinit var adapter: SantriAdapter
+    private lateinit var adapter: SantriAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //recycle list
-//        showRecyclerList()
+        showRecyclerList()
     }
 
     //Option Menu in Action Bar
@@ -86,39 +91,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    private fun showRecyclerList() {
-//        adapter = SantriAdapter(ArrayList())
-//        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-//        activityMainBinding.recyclerView.adapter = adapter
-//        santriViewModel.getSantri().observe(this) { response ->
-//            when (response.status) {
-//                StatusResponse.SUCCESS -> {
-//                    showLoading(false)
-//                    val data = response.body?.santriResponse
-//                    if (response.body != null) {
-//                        adapter = data?.let { SantriAdapter(it) }!!
-//                        activityMainBinding.recyclerView.adapter = adapter
-//                    }
-//                }
-//                StatusResponse.EMPTY -> {
-//                    showLoading(false)
-//                    adapter = SantriAdapter(ArrayList())
-//                    activityMainBinding.recyclerView.adapter = adapter
-//                }
-//                StatusResponse.ERROR -> {
-//                    showLoading(false)
-//                    Toast.makeText(
-//                        this,
-//                        "An error occured, Please try again later.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//                else -> {
-//                    showLoading(true)
-//                }
-//            }
-//        }
-//    }
+    private fun showRecyclerList() {
+        adapter = SantriAdapter(ArrayList())
+        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this)
+        activityMainBinding.recyclerView.adapter = adapter
+        santriViewModel.getSantri().observe(this) { response ->
+            when (response.status) {
+                StatusResponse.SUCCESS -> {
+                    showLoading(false)
+                    val data = response.body?.santri
+                    if (response.body != null) {
+                        adapter = data?.let { SantriAdapter(it) }!!
+                        activityMainBinding.recyclerView.adapter = adapter
+                    }
+                }
+                StatusResponse.EMPTY -> {
+                    showLoading(false)
+                    adapter = SantriAdapter(ArrayList())
+                    activityMainBinding.recyclerView.adapter = adapter
+                }
+                StatusResponse.ERROR -> {
+                    showLoading(false)
+                    Toast.makeText(
+                        this,
+                        "An error occured, Please try again later.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    showLoading(true)
+                }
+            }
+        }
+    }
 
     private fun showLoading(state: Boolean) {
         if (state) {

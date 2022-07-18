@@ -36,7 +36,7 @@ class SantriActivity : AppCompatActivity() {
         binding.rvSantri
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        showRecyclerList()
+        setObservers()
         showLoading(true)
     }
 
@@ -70,22 +70,18 @@ class SantriActivity : AppCompatActivity() {
         return true
     }
 
-    private fun showRecyclerList() {
-        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            binding.rvSantri.layoutManager = GridLayoutManager(this, 2)
-        } else {
-            binding.rvSantri.layoutManager = LinearLayoutManager(this)
-        }
+    private fun setObservers() {
         adapter = SantriAdapter(ArrayList())
         santriViewModel.getSantri().observe(this) { response ->
             when (response.status) {
                 StatusResponse.SUCCESS -> {
                     showLoading(false)
-                    val data = response.body?.santriResponse
+                    val data = response.body?.santri
                     if (response.body != null) {
                         adapter = data?.let { SantriAdapter(it) }!!
-                        binding.rvSantri.adapter = adapter
                     }
+                    binding.rvSantri.adapter = adapter
+                    loadRecyclerView()
                 }
                 StatusResponse.EMPTY -> {
                     showLoading(false)
@@ -116,6 +112,15 @@ class SantriActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             binding.rvSantri.visibility = View.VISIBLE
         }
+    }
+
+    private fun loadRecyclerView() {
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            binding.rvSantri.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            binding.rvSantri.layoutManager = LinearLayoutManager(this)
+        }
+        binding.rvSantri.setHasFixedSize(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {

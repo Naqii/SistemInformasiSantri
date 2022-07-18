@@ -3,8 +3,8 @@ package com.example.sis.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.sis.data.api.ApiResponse
-import com.example.sis.data.api.SantriResponse
 import com.example.sis.data.api.repository.MainRepository
+import com.example.sis.data.model.SantriResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
