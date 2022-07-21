@@ -20,11 +20,11 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     inner class SantriViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(dataSantri: SantriItem) {
             with(binding) {
-//                Glide.with(itemView)
-//                    .load(dataSantri.img)
-//                    .transition(DrawableTransitionOptions.withCrossFade())
-//                    .centerCrop()
-//                    .into(foto)
+                Glide.with(itemView)
+                    .load(dataSantri.img)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .centerCrop()
+                    .into(foto)
                 tvNis.text = dataSantri.nis
                 tvUsername.text = dataSantri.name
                 tvTelp.text = dataSantri.telp
