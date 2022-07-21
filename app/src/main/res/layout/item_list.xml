@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp"
+    android:layout_width="200dp"
+    android:layout_height="300dp"
+    android:layout_margin="6dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"
@@ -16,18 +13,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/foto"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="168dp"
+            android:layout_height="116dp"
             android:layout_margin="12dp"
             android:contentDescription="@string/data_santri"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
@@ -35,24 +32,22 @@
             android:id="@+id/tv_nis"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/data_nis"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.18"
-            app:layout_constraintStart_toEndOf="@+id/foto"
-            app:layout_constraintTop_toTopOf="@+id/foto"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintEnd_toEndOf="@+id/foto"
+            app:layout_constraintStart_toStartOf="@+id/foto"
+            app:layout_constraintTop_toBottomOf="@+id/foto" />
 
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/data_santri"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_nis"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_nis"
             app:layout_constraintTop_toBottomOf="@+id/tv_nis" />
 
@@ -60,10 +55,10 @@
             android:id="@+id/tv_telp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/data_telp"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_username"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_username"
             app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
@@ -71,10 +66,10 @@
             android:id="@+id/tv_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/data_address"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_telp"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_telp"
             app:layout_constraintTop_toBottomOf="@+id/tv_telp" />
 

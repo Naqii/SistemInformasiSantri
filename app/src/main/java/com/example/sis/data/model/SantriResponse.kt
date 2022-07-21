@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SantriResponse(
 
-	val santri: List<SantriItem>? = null
+	val santri: ArrayList<SantriItem>? = null
 )
 
 data class SantriItem(

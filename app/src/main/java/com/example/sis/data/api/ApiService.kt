@@ -3,16 +3,16 @@ package com.example.sis.data.api
 import com.example.sis.data.model.SantriResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
     @GET("santri")
-    fun getListSantri(): Call<SantriResponse>
+    fun getSantri(): Call<SantriResponse>
 
     @GET("santri/{id}")
-    fun getDetailSantri (
-        @Path("id")
+    fun setSantri (
+        @Query("id")
         id: String
     ): Call<SantriResponse>
 }

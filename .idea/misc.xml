@@ -7,6 +7,7 @@
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1225" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/bg_item.xml" value="0.1" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
+        <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/ic_search.xml" value="0.124" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_menu.xml" value="0.25" />
@@ -18,7 +19,7 @@
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_list_horizontal.xml" value="0.16" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_pondok.xml" value="0.25" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/option_menu_sub.xml" value="0.365625" />
-        <entry key="..\:/AndroidProject/SIS/app/src/main/res/menu/option_menu.xml" value="0.18" />
+        <entry key="..\:/AndroidProject/SIS/app/src/main/res/menu/option_menu.xml" value="0.22" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/menu/option_menusub.xml" value="0.18" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/menu/option_sub.xml" value="0.36666666666666664" />
       </map>

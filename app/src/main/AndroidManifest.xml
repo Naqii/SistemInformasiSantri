@@ -15,9 +15,6 @@
         android:theme="@style/Theme.SIS"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".view.santri.SantriActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.MenuActivity"
             android:exported="false" />
         <activity
