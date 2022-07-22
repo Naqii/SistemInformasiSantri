@@ -11,7 +11,7 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(santri: ArrayList<SantriItem>) {
+    fun setData(santri: ArrayList<SantriItem>) {
         listSantri.clear()
         listSantri.addAll(santri)
         notifyDataSetChanged()

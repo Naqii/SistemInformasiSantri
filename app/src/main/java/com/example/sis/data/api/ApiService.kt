@@ -3,7 +3,7 @@ package com.example.sis.data.api
 import com.example.sis.data.model.SantriResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -12,7 +12,7 @@ interface ApiService {
 
     @GET("santri/{id}")
     fun setSantri (
-        @Query("id")
+        @Path("id")
         id: String
     ): Call<SantriResponse>
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.repository.MainRepository
+import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,5 +18,5 @@ class SantriViewModel @Inject constructor(
 
     fun setSearchSantri(id: String): LiveData<ApiResponse<SantriResponse>> = repository.setSearchSantri(id)
 
-    fun gesSearchSantri(): LiveData<ApiResponse<SantriResponse>> = repository.getSearchSantri()
+    fun getSearchSantri(): LiveData<ArrayList<SantriItem>> = repository.getSearchSantri()
 }

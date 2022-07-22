@@ -2,6 +2,7 @@ package com.example.sis.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -37,8 +38,46 @@ class MainActivity : AppCompatActivity() {
         val currentUser = mAuth.currentUser
         activityMainBinding.prevEmail.text = currentUser?.email
 
-        //recycle list
-        showRecyclerList()
+        //recycleview
+        adapter = SantriAdapter(ArrayList())
+        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        showData()
+
+        //search
+        searchManager()
+        santriViewModel.getSearchSantri().observe(this) {
+            if (it != null) {
+                adapter.setData(it)
+                activityMainBinding.recyclerView.adapter = adapter
+                showLoading(false)
+            }
+        }
+    }
+
+    //search method
+    private fun searchManager() {
+        activityMainBinding.btnSearch.setOnClickListener {
+            searchSantri()
+        }
+        activityMainBinding.etQuery.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                searchSantri()
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
+    }
+    private fun searchSantri() {
+        val query = activityMainBinding.etQuery.text.toString()
+        if (query.isEmpty()) return
+            showLoading(true)
+        santriViewModel.setSearchSantri(query)
+//        santriViewModel.getSearchSantri().observe(this) { santri ->
+//            if (santri != null) {
+//                adapter.setData(santri)
+//                showLoading(false)
+//            }
+//        }
     }
 
     //Option Menu in Action Bar
@@ -47,28 +86,17 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.option_menu, menu)
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.menu -> {
                 startActivity(Intent(this, MenuActivity::class.java))
-                return true
+                true
             }
-            else -> return true
+            else -> true
         }
     }
 
-    private fun showRecyclerList() {
-        adapter = SantriAdapter(ArrayList())
-//        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            activityMainBinding.recyclerView.layoutManager = GridLayoutManager(this, 2)
-//        } else {
-//            activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-//        }
-        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        showData()
-    }
-
+    //data recyclelist
     private fun showData() {
         santriViewModel.getSantri().observe(this) { response ->
             when (response.status) {

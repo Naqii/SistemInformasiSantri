@@ -1,10 +1,10 @@
 package com.example.sis.data.api.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.ApiService
+import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,6 +55,8 @@ class MainRepository @Inject constructor(private val service: ApiService) {
                     val body = response.body()
                     if (body != null) {
                         item.postValue(ApiResponse.success(body))
+                    } else {
+                        item.postValue(ApiResponse.error("No Response", SantriResponse()))
                     }
                 }
             }
@@ -67,8 +69,8 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         return item
     }
 
-    fun getSearchSantri(): MutableLiveData<ApiResponse<SantriResponse>> {
-        val item = MutableLiveData<ApiResponse<SantriResponse>>()
+    fun getSearchSantri(): MutableLiveData<ArrayList<SantriItem>> {
+        val item = MutableLiveData<ArrayList<SantriItem>>()
         return item
     }
 }
