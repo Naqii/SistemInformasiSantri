@@ -45,13 +45,6 @@ class MainActivity : AppCompatActivity() {
 
         //search
         searchManager()
-        santriViewModel.getSearchSantri().observe(this) {
-            if (it != null) {
-                adapter.setData(it)
-                activityMainBinding.recyclerView.adapter = adapter
-                showLoading(false)
-            }
-        }
     }
 
     //search method
@@ -71,13 +64,35 @@ class MainActivity : AppCompatActivity() {
         val query = activityMainBinding.etQuery.text.toString()
         if (query.isEmpty()) return
             showLoading(true)
-        santriViewModel.setSearchSantri(query)
-//        santriViewModel.getSearchSantri().observe(this) { santri ->
-//            if (santri != null) {
-//                adapter.setData(santri)
-//                showLoading(false)
-//            }
-//        }
+//        santriViewModel.setSrcSantri(query)
+        santriViewModel.setSrcSantri(query).observe(this) { response ->
+            when (response.status) {
+                StatusResponse.SUCCESS -> {
+                    showLoading(false)
+                    val id = response.body?.santri
+                    if (response.body != null) {
+                        id?.let { adapter.setData(it) }
+                        activityMainBinding.recyclerView.adapter = adapter
+                    }
+                }
+                StatusResponse.EMPTY -> {
+                    showLoading(false)
+                    adapter = SantriAdapter(ArrayList())
+                    activityMainBinding.recyclerView.adapter = adapter
+                }
+                StatusResponse.ERROR -> {
+                    showLoading(false)
+                    Toast.makeText(
+                        this,
+                        "An error occureed can't bind data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    showLoading(true)
+                }
+            }
+        }
     }
 
     //Option Menu in Action Bar

@@ -11,7 +11,7 @@ interface ApiService {
     fun getSantri(): Call<SantriResponse>
 
     @GET("santri/{id}")
-    fun setSantri (
+    fun getSrcSantri (
         @Path("id")
         id: String
     ): Call<SantriResponse>

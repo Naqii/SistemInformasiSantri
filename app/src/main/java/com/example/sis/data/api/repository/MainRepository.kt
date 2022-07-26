@@ -42,10 +42,10 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         })
         return item
     }
-
-    fun setSearchSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
+    //awalnya set
+    fun getSrcSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
-        val api = service.setSantri(id)
+        val api = service.getSrcSantri(id)
         api.enqueue(object : Callback<SantriResponse>{
             override fun onResponse(
                 call: Call<SantriResponse>,
@@ -69,8 +69,31 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         return item
     }
 
-    fun getSearchSantri(): MutableLiveData<ArrayList<SantriItem>> {
-        val item = MutableLiveData<ArrayList<SantriItem>>()
-        return item
-    }
+//    fun getSrcSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
+//        val item = MutableLiveData<ApiResponse<SantriResponse>>()
+//        val api = service.getSrcSantri(id)
+//        api.enqueue(object : Callback<SantriResponse>{
+//            override fun onResponse(
+//                call: Call<SantriResponse>,
+//                response: Response<SantriResponse>
+//            ) {
+//                if (response.isSuccessful) {
+//                    val body = response.body()
+//                    if (body != null) {
+//                        item.value = ApiResponse.success(body)
+//                    } else {
+//                        item.value = ApiResponse.error("No response", SantriResponse())
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<SantriResponse>, t: Throwable) {
+//                item.value = ApiResponse.error(
+//                    "Error reported [UNKNOWN]",
+//                    SantriResponse()
+//                )
+//            }
+//        })
+//        return item
+//    }
 }

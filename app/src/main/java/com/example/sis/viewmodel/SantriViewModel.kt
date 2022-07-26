@@ -16,7 +16,7 @@ class SantriViewModel @Inject constructor(
 
     fun getSantri(): LiveData<ApiResponse<SantriResponse>> = repository.getSantri()
 
-    fun setSearchSantri(id: String): LiveData<ApiResponse<SantriResponse>> = repository.setSearchSantri(id)
+    fun setSrcSantri(id: String): LiveData<ApiResponse<SantriResponse>> = repository.getSrcSantri(id)
 
-    fun getSearchSantri(): LiveData<ArrayList<SantriItem>> = repository.getSearchSantri()
+//    fun getSrcSantri(id: String): LiveData<ApiResponse<SantriResponse>> = repository.getSrcSantri(id)
 }
