@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sis.data.model.SantriItem
 import com.example.sis.databinding.ItemListBinding
 
@@ -20,11 +21,9 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     inner class SantriViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(dataSantri: SantriItem) {
             with(binding) {
-//                Glide.with(itemView)
-//                    .load(dataSantri.img)
-//                    .transition(DrawableTransitionOptions.withCrossFade())
-//                    .centerCrop()
-//                    .into(foto)
+                Glide.with(itemView)
+                    .load(dataSantri.foto)
+                    .into(foto)
                 tvNis.text = dataSantri.nis
                 tvUsername.text = dataSantri.name
                 tvTelp.text = dataSantri.telp
