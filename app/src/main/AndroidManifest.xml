@@ -15,7 +15,7 @@
         android:theme="@style/Theme.SIS"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".view.MenuActivity"
+            android:name=".view.activity.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.RegistrationActivity"
@@ -24,10 +24,10 @@
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".view.SplashScreen"
+            android:name=".view.activity.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

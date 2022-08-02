@@ -23,6 +23,7 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
             with(binding) {
                 Glide.with(itemView)
                     .load(dataSantri.foto)
+                    .circleCrop()
                     .into(foto)
                 tvNis.text = dataSantri.nis
                 tvUsername.text = dataSantri.name

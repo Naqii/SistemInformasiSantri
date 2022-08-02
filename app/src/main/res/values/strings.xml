@@ -20,4 +20,6 @@
     <string name="data_nis">NIS</string>
     <string name="data_telp">Telephone</string>
     <string name="data_address">Address</string>
+    <string name="add">Add</string>
+    <string name="daftar_santri">Daftar Santri</string>
 </resources>

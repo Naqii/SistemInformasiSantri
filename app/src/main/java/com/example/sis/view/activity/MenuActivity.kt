@@ -1,4 +1,4 @@
-package com.example.sis.view
+package com.example.sis.view.activity
 
 import android.content.Intent
 import android.os.Bundle
