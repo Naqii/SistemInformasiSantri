@@ -8,7 +8,7 @@
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/bg_item.xml" value="0.1" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/drawable/ic_search.xml" value="0.124" />
-        <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_detail.xml" value="0.22" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_menu.xml" value="0.25" />
@@ -17,7 +17,7 @@
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/fragment_detail.xml" value="0.2861111111111111" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/fragment_menu.xml" value="0.17806484295845998" />
-        <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_detail.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_detail.xml" value="0.22" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_detail_kampus.xml" value="0.33" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_detail_nilai.xml" value="0.5" />
         <entry key="..\:/AndroidProject/SIS/app/src/main/res/layout/item_detail_presensi.xml" value="0.33" />

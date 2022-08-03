@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sis.R
 import com.example.sis.adapter.SantriAdapter
 import com.example.sis.data.api.StatusResponse
+import com.example.sis.data.model.SantriItem
 import com.example.sis.databinding.ActivityMainBinding
 import com.example.sis.viewmodel.SantriViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -40,8 +41,20 @@ class MainActivity : AppCompatActivity() {
 
         //recycleview
         adapter = SantriAdapter(ArrayList())
-        activityMainBinding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        activityMainBinding.recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        adapter.setOnItemCLickCallback(object : SantriAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: SantriItem) {
+                showSelectedData(data)
+            }
+        })
         showData()
+
+        //exemple
+        activityMainBinding.addButton.setOnClickListener {
+            val intent = Intent(this, DetailActivity::class.java)
+            startActivity(intent)
+        }
 
         //search
         searchManager()
@@ -60,10 +73,11 @@ class MainActivity : AppCompatActivity() {
             return@setOnKeyListener false
         }
     }
+
     private fun searchSantri() {
         val query = activityMainBinding.etQuery.text.toString()
         if (query.isEmpty()) return
-            showLoading(true)
+        showLoading(true)
 //        santriViewModel.setSrcSantri(query)
         santriViewModel.setSrcSantri(query).observe(this) { response ->
             when (response.status) {
@@ -101,6 +115,7 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.option_menu, menu)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu -> {
@@ -141,6 +156,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    //onClick Intent
+    private fun showSelectedData(data: SantriItem) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(DetailActivity.EXTRA_DATA, data)
+        startActivity(intent)
     }
 
     private fun showLoading(state: Boolean) {

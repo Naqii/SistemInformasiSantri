@@ -46,4 +46,6 @@
     <string name="kota">Kota</string>
     <string name="provinsi">Provinsi</string>
     <string name="ttl">TTL</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="detail_bio">Detail Bio</string>
 </resources>

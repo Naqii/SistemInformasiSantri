@@ -18,6 +18,11 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
         notifyDataSetChanged()
     }
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    fun setOnItemCLickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     inner class SantriViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(dataSantri: SantriItem) {
             with(binding) {
@@ -31,9 +36,9 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
                 tvAddress.text = dataSantri.address
             }
             //on click
-//            itemView.setOnClickListener {
-//
-//            }
+            itemView.setOnClickListener {
+                onItemClickCallback.onItemClicked(dataSantri)
+            }
         }
     }
 
@@ -48,4 +53,8 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     }
 
     override fun getItemCount(): Int = listSantri.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: SantriItem)
+    }
 }
