@@ -22,4 +22,28 @@
     <string name="data_address">Address</string>
     <string name="add">Add</string>
     <string name="daftar_santri">Daftar Santri</string>
+    <string name="value">value</string>
+
+    <string name="kampus">Kampus</string>
+    <string name="univ">Universitas</string>
+    <string name="fakultas">Fakultas</string>
+    <string name="program_studi">Program Studi</string>
+    <string name="gelar">Gelar</string>
+
+    <string name="presensi_santri">Presensi Santri</string>
+    <string name="hadir">Hadir</string>
+    <string name="izin">Izin</string>
+    <string name="tanpa_keterangan">Tanpa Keterangan</string>
+    <string name="keterangan">Keterangan</string>
+
+    <string name="nilai_santri">Nilai Santri</string>
+    <string name="materi">Materi</string>
+    <string name="bacaan">Bacaan</string>
+    <string name="hafalan">Hafalan</string>
+    <string name="sikap">Sikap</string>
+
+    <string name="name">Nama</string>
+    <string name="kota">Kota</string>
+    <string name="provinsi">Provinsi</string>
+    <string name="ttl">TTL</string>
 </resources>

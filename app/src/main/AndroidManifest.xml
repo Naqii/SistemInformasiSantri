@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SIS"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".view.activity.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.MenuActivity"
             android:exported="false" />
         <activity
