@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fade"
+    android:id="@+id/detail_page"
     tools:context=".view.activity.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -249,7 +250,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/detail_kampus" />
 
                     <TextView
-                        android:id="@+id/value_univ"
+                        android:id="@+id/tv_univ"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -260,7 +261,7 @@
                         app:layout_constraintVertical_bias="0.2" />
 
                     <TextView
-                        android:id="@+id/value_fakultas"
+                        android:id="@+id/tv_fakultas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -278,9 +279,9 @@
                         android:text="@string/program_studi"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/value_univ"
-                        app:layout_constraintStart_toStartOf="@+id/value_univ"
-                        app:layout_constraintTop_toBottomOf="@+id/value_univ" />
+                        app:layout_constraintEnd_toEndOf="@+id/tv_univ"
+                        app:layout_constraintStart_toStartOf="@+id/tv_univ"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_univ" />
 
                     <TextView
                         android:id="@+id/gelar"
@@ -290,12 +291,12 @@
                         android:text="@string/gelar"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/value_fakultas"
-                        app:layout_constraintStart_toStartOf="@+id/value_fakultas"
-                        app:layout_constraintTop_toBottomOf="@+id/value_fakultas" />
+                        app:layout_constraintEnd_toEndOf="@+id/tv_fakultas"
+                        app:layout_constraintStart_toStartOf="@+id/tv_fakultas"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_fakultas" />
 
                     <TextView
-                        android:id="@+id/value_progdi"
+                        android:id="@+id/tv_progdi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -305,7 +306,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/progdi" />
 
                     <TextView
-                        android:id="@+id/value_gelar"
+                        android:id="@+id/tv_gelar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -387,7 +388,7 @@
 
 
                     <TextView
-                        android:id="@+id/value_materi"
+                        android:id="@+id/tv_materi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -397,7 +398,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/materi" />
 
                     <TextView
-                        android:id="@+id/value_bacaan"
+                        android:id="@+id/tv_bacaan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -407,7 +408,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/bacaan" />
 
                     <TextView
-                        android:id="@+id/value_hafalan"
+                        android:id="@+id/tv_hafalan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -417,7 +418,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/hafalan" />
 
                     <TextView
-                        android:id="@+id/value_sikap"
+                        android:id="@+id/tv_sikap"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -497,10 +498,10 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/value_izin" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_izin" />
 
                     <TextView
-                        android:id="@+id/value_hadir"
+                        android:id="@+id/tv_hadir"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -511,7 +512,7 @@
                         app:layout_constraintVertical_bias="0.2" />
 
                     <TextView
-                        android:id="@+id/value_izin"
+                        android:id="@+id/tv_izin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -522,7 +523,7 @@
                         app:layout_constraintVertical_bias="0.2" />
 
                     <TextView
-                        android:id="@+id/value_alfa"
+                        android:id="@+id/tv_alfa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"
@@ -533,7 +534,7 @@
                         app:layout_constraintVertical_bias="0.2" />
 
                     <TextView
-                        android:id="@+id/value_keterangan"
+                        android:id="@+id/tv_keterangan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/value"

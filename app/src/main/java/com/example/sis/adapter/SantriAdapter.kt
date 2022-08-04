@@ -1,12 +1,14 @@
 package com.example.sis.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sis.data.model.SantriItem
 import com.example.sis.databinding.ItemListBinding
+import com.example.sis.view.activity.DetailActivity
 
 class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     RecyclerView.Adapter<SantriAdapter.SantriViewHolder>() {
@@ -18,17 +20,12 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
         notifyDataSetChanged()
     }
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
-    fun setOnItemCLickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    inner class SantriViewHolder(private val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class SantriViewHolder(private val binding: ItemListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(dataSantri: SantriItem) {
             with(binding) {
                 Glide.with(itemView)
                     .load(dataSantri.foto)
-                    .circleCrop()
                     .into(foto)
                 tvNis.text = dataSantri.nis
                 tvUsername.text = dataSantri.name
@@ -37,7 +34,9 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
             }
             //on click
             itemView.setOnClickListener {
-                onItemClickCallback.onItemClicked(dataSantri)
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_DATA, dataSantri)
+                itemView.context.startActivity(intent)
             }
         }
     }
@@ -53,8 +52,4 @@ class SantriAdapter(private val listSantri: ArrayList<SantriItem>) :
     }
 
     override fun getItemCount(): Int = listSantri.size
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: SantriItem)
-    }
 }
