@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         showData()
         showRecyclerView()
 
-        //fab
+        //fab add
         activityMainBinding.addButton.setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
+            val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
         }
 

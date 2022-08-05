@@ -15,20 +15,23 @@
         android:theme="@style/Theme.SIS"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".view.activity.AddActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.MenuActivity"
             android:exported="false" />
         <activity
+            android:name=".view.activity.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.login.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="true" />
         <activity
             android:name=".view.activity.SplashScreen"
             android:exported="true"
