@@ -29,46 +29,51 @@ class DetailActivity : AppCompatActivity() {
 
         val data = intent.getParcelableExtra(EXTRA_DATA) as? SantriItem
         viewModel.getDetailUser().observe(this) { response ->
-            Log.d("tag", response[0].toString())
-//            view(response[0])
+            if (response != null) {
+                Log.d("tag", response[0].toString())
+                view(response[0])
+            }
         }
         if (data != null) {
             viewModel.setDetailUser(data.id)
-            with(binding) {
-                Glide.with(this@DetailActivity)
-                    .load(data.foto)
-                    .apply(RequestOptions().override(150, 150))
-                    .into(foto)
-                nis.text = data.nis
-                name.text = data.name
-                telp.text = data.telp
-                //Detail Bio
-                tvEmail.text = data.email
-                tvAddress.text = data.address
-                tvKota.text = data.city
-                tvTtl.text = data.birth
-                tvProvince.text = data.province
-                //Detail Kampus
-                tvUniv.text = data.kampusUniv
-                tvFakultas.text = data.kampusJurusan
-                tvProgdi.text = data.kampusProgdi
-                tvGelar.text = data.kampusGelar
-                //Detail Nilai
-                tvMateri.text = data.nilaiMateri
-                tvBacaan.text = data.nilaiBacaan
-                tvSikap.text = data.nilaiSikap
-                tvHafalan.text = data.nilaiHafalan
-                //Detail Presensi
-                tvHadir.text = data.presensiHadir
-                tvIzin.text = data.presensiIzin
-                tvAlfa.text = data.presensiAlfa
-                tvKeterangan.text = data.presensiKeterangan
-            }
             showLoading(false)
+            view(data)
         } else {
             showLoading(true)
         }
+    }
 
+    private fun view(data: SantriItem) {
+        with(binding) {
+            Glide.with(this@DetailActivity)
+                .load(data.foto)
+                .apply(RequestOptions().override(150, 150))
+                .into(foto)
+            nis.text = data.nis
+            name.text = data.name
+            telp.text = data.telp
+            //Detail Bio
+            tvEmail.text = data.email
+            tvAddress.text = data.address
+            tvKota.text = data.city
+            tvTtl.text = data.birth
+            tvProvince.text = data.province
+            //Detail Kampus
+            tvUniv.text = data.kampusUniv
+            tvFakultas.text = data.kampusJurusan
+            tvProgdi.text = data.kampusProgdi
+            tvGelar.text = data.kampusGelar
+            //Detail Nilai
+            tvMateri.text = data.nilaiMateri
+            tvBacaan.text = data.nilaiBacaan
+            tvSikap.text = data.nilaiSikap
+            tvHafalan.text = data.nilaiHafalan
+            //Detail Presensi
+            tvHadir.text = data.presensiHadir
+            tvIzin.text = data.presensiIzin
+            tvAlfa.text = data.presensiAlfa
+            tvKeterangan.text = data.presensiKeterangan
+        }
     }
 
     private fun showLoading(state: Boolean) {
