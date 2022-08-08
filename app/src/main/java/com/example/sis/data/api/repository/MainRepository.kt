@@ -10,6 +10,7 @@ import okhttp3.internal.threadName
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Path
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,7 +20,7 @@ class MainRepository @Inject constructor(private val service: ApiService) {
     fun getSantri(): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
         val api = service.getSantri()
-        api.enqueue(object : Callback<SantriResponse>{
+        api.enqueue(object : Callback<SantriResponse> {
             override fun onResponse(
                 call: Call<SantriResponse>,
                 response: Response<SantriResponse>
@@ -47,7 +48,7 @@ class MainRepository @Inject constructor(private val service: ApiService) {
     fun getSrcSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
         val api = service.getSrcSantri(id)
-        api.enqueue(object : Callback<SantriResponse>{
+        api.enqueue(object : Callback<SantriResponse> {
             override fun onResponse(
                 call: Call<SantriResponse>,
                 response: Response<SantriResponse>
@@ -71,13 +72,31 @@ class MainRepository @Inject constructor(private val service: ApiService) {
 
     fun createSantri(santri: SantriItem, id: String): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
-        val api = service.createSantri(santri,
-            id, santri.nis, santri.name, santri.telp, santri.address, santri.city, santri.province, santri.birth,
-            santri.email, santri.nilaiSikap, santri.nilaiMateri, santri.nilaiBacaan, santri.nilaiHafalan, santri.presensiHadir,
-            santri.presensiIzin, santri.presensiAlfa, santri.presensiKeterangan, santri.kampusUniv, santri.kampusProgdi,
-            santri.kampusJurusan, santri.kampusGelar
+        val api = service.createSantri(
+            santri,
+            santri.id,
+            santri.nis,
+            santri.name,
+            santri.telp,
+            santri.address,
+            santri.city,
+            santri.province,
+            santri.birth,
+            santri.email,
+            santri.nilaiSikap,
+            santri.nilaiMateri,
+            santri.nilaiBacaan,
+            santri.nilaiHafalan,
+            santri.presensiHadir,
+            santri.presensiIzin,
+            santri.presensiAlfa,
+            santri.kampusUniv,
+            santri.kampusProgdi,
+            santri.kampusJurusan,
+            santri.kampusGelar,
+            santri.foto
         )
-        api.enqueue(object : Callback<SantriResponse>{
+        api.enqueue(object : Callback<SantriResponse> {
             override fun onResponse(
                 call: Call<SantriResponse>,
                 response: Response<SantriResponse>
