@@ -16,6 +16,8 @@ class AddActivity : AppCompatActivity() {
 
         supportActionBar?.title = TITLE
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

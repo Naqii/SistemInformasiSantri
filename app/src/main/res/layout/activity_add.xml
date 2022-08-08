@@ -6,4 +6,6 @@
     android:background="@color/fade"
     tools:context=".view.activity.AddActivity">
 
+    <include layout="@layout/edited_field"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,7 @@
 
         <FrameLayout
             android:id="@+id/search"
-            android:layout_width="0dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:padding="8dp"
@@ -77,20 +77,19 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
                 app:boxCornerRadiusTopEnd="16dp"
                 app:boxCornerRadiusTopStart="16dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:id="@+id/et_query"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/search"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textColorHint="#616161"
-                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:hint="@string/data_nis"
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,9 +99,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginEnd="16dp"
+                android:contentDescription="@string/search"
                 android:src="@drawable/ic_search"
-                tools:ignore="RtlHardcoded"
-                android:contentDescription="@string/search" />
+                tools:ignore="RtlHardcoded" />
 
         </FrameLayout>
 
