@@ -6,6 +6,7 @@ import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.ApiService
 import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
+import okhttp3.internal.threadName
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,7 +43,7 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         })
         return item
     }
-    //awalnya set
+
     fun getSrcSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
         val api = service.getSrcSantri(id)
@@ -64,7 +65,35 @@ class MainRepository @Inject constructor(private val service: ApiService) {
             override fun onFailure(call: Call<SantriResponse>, t: Throwable) {
                 t.message?.let { Log.d("Failure", it) }
             }
+        })
+        return item
+    }
 
+    fun createSantri(santri: SantriItem, id: String): MutableLiveData<ApiResponse<SantriResponse>> {
+        val item = MutableLiveData<ApiResponse<SantriResponse>>()
+        val api = service.createSantri(santri,
+            id, santri.nis, santri.name, santri.telp, santri.address, santri.city, santri.province, santri.birth,
+            santri.email, santri.nilaiSikap, santri.nilaiMateri, santri.nilaiBacaan, santri.nilaiHafalan, santri.presensiHadir,
+            santri.presensiIzin, santri.presensiAlfa, santri.presensiKeterangan, santri.kampusUniv, santri.kampusProgdi,
+            santri.kampusJurusan, santri.kampusGelar
+        )
+        api.enqueue(object : Callback<SantriResponse>{
+            override fun onResponse(
+                call: Call<SantriResponse>,
+                response: Response<SantriResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) {
+                        item.value = ApiResponse.success(body)
+                    } else
+                        item.value = ApiResponse.error("No Response", SantriResponse())
+                }
+            }
+
+            override fun onFailure(call: Call<SantriResponse>, t: Throwable) {
+                t.message?.let { Log.d("Failure", it) }
+            }
         })
         return item
     }
