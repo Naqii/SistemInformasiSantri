@@ -1,5 +1,6 @@
 package com.example.sis.data.api
 
+import com.example.sis.data.model.Response
 import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
 import retrofit2.Call
@@ -16,79 +17,40 @@ interface ApiService {
         id: String
     ): Call<SantriResponse>
 
-    @POST("santri/{id}")
+//    @FormUrlEncoded
+    @POST("santri")
     fun createSantri (
         @Body santri: SantriItem,
-        @Path("id") id: String,
-        @Path("nis") nis: String,
-        @Path("name") name: String,
-        @Path("telp") telp: String,
-        @Path("address") address: String,
-        @Path("city") city: String,
-        @Path("province") province: String,
-        @Path("birth") birth: String,
-        @Path("email") email: String,
-        @Path("nilai_sikap") nilai_sikap: String,
-        @Path("nilai_materi") nilai_materi: String,
-        @Path("nilai_bacaan") nilai_bacaan: String,
-        @Path("nilai_hafalan") nilai_hafalan: String,
-        @Path("presensi_hadir") presensi_hadir: String,
-        @Path("presensi_izin") presensi_izin: String,
-        @Path("presensi_alfa") presensi_alfa: String,
-        @Path("kampus_univ") kampus_univ: String,
-        @Path("kampus_progdi") kampus_progdi: String,
-        @Path("kampus_jurusan") kampus_jurusan: String,
-        @Path("kampus_gelar") kampus_gelar: String,
-        @Path("foto") foto: String
-        ): Call<SantriResponse>
+//        @Field("nis") nis: String,
+//        @Field("name") name: String,
+//        @Field("telp") telp: String,
+//        @Field("address") address: String,
+//        @Field("city") city: String,
+//        @Field("province") province: String,
+//        @Field("birth") birth: String,
+//        @Field("email") email: String,
+//        @Field("foto") foto: String,
+//        @Field("nilai_sikap") nilai_sikap: String,
+//        @Field("nilai_materi") nilai_materi: String,
+//        @Field("nilai_bacaan") nilai_bacaan: String,
+//        @Field("nilai_hafalan") nilai_hafalan: String,
+//        @Field("presensi_hadir") presensi_hadir: String,
+//        @Field("presensi_izin") presensi_izin: String,
+//        @Field("presensi_alfa") presensi_alfa: String,
+//        @Field("kampus_univ") kampus_univ: String,
+//        @Field("kampus_progdi") kampus_progdi: String,
+//        @Field("kampus_jurusan") kampus_jurusan: String,
+//        @Field("kampus_gelar") kampus_gelar: String
+    ): Call<Response>
 
     @PUT("santri/{id}")
-    fun edtSantri (
+    fun updateSantri (
         @Path("id") id: String,
-        @Path("nis") nis: String,
-        @Path("name") name: String,
-        @Path("telp") telp: String,
-        @Path("address") address: String,
-        @Path("city") city: String,
-        @Path("province") province: String,
-        @Path("birth") birth: String,
-        @Path("email") email: String,
-        @Path("nilai_sikap") nilai_sikap: String,
-        @Path("nilai_materi") nilai_materi: String,
-        @Path("nilai_bacaan") nilai_bacaan: String,
-        @Path("nilai_hafalan") nilai_hafalan: String,
-        @Path("presensi_hadir") presensi_hadir: String,
-        @Path("presensi_izin") presensi_izin: String,
-        @Path("presensi_alfa") presensi_alfa: String,
-        @Path("kampus_univ") kampus_univ: String,
-        @Path("kampus_progdi") kampus_progdi: String,
-        @Path("kampus_jurusan") kampus_jurusan: String,
-        @Path("kampus_gelar") kampus_gelar: String,
-        @Path("foto") foto: String
+        @Body santri: SantriItem
     ): Call<SantriResponse>
 
-    @PUT("santri/{id}")
+    @DELETE("santri/{id}")
     fun deleteSantri (
-        @Path("id") id: String,
-        @Path("nis") nis: String,
-        @Path("name") name: String,
-        @Path("telp") telp: String,
-        @Path("address") address: String,
-        @Path("city") city: String,
-        @Path("province") province: String,
-        @Path("birth") birth: String,
-        @Path("email") email: String,
-        @Path("nilai_sikap") nilai_sikap: String,
-        @Path("nilai_materi") nilai_materi: String,
-        @Path("nilai_bacaan") nilai_bacaan: String,
-        @Path("nilai_hafalan") nilai_hafalan: String,
-        @Path("presensi_hadir") presensi_hadir: String,
-        @Path("presensi_izin") presensi_izin: String,
-        @Path("presensi_alfa") presensi_alfa: String,
-        @Path("kampus_univ") kampus_univ: String,
-        @Path("kampus_progdi") kampus_progdi: String,
-        @Path("kampus_jurusan") kampus_jurusan: String,
-        @Path("kampus_gelar") kampus_gelar: String,
-        @Path("foto") foto: String
+        @Path("id") id: String
     ): Call<SantriResponse>
 }
