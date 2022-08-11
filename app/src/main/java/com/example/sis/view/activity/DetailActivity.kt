@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
         if (data != null) {
-            viewModel.setDetailUser(data.id)
+            data.id?.let { viewModel.setDetailUser(it) }
             showLoading(false)
             view(data)
         } else {

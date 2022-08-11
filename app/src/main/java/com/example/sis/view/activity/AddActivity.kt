@@ -1,9 +1,9 @@
 package com.example.sis.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sis.data.model.SantriItem
 import com.example.sis.databinding.ActivityAddBinding
 import com.example.sis.viewmodel.CreateViewModel
@@ -23,42 +23,36 @@ class AddActivity : AppCompatActivity() {
         supportActionBar?.title = TITLE
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-    }
-
-    private fun setupListener() {
-        binding.button.setOnClickListener {
-            Log.e("", binding.edtNis.toString())
+        binding.createButton.setOnClickListener {
+            createSantri()
         }
     }
 
-    private fun saveData() {
-
-    }
-
-    private fun dataInput(){
-       with(binding){
-           edtNis.toString()
-           edtName.toString()
-           edtTelp.toString()
-           edtAddress.toString()
-           edtCity.toString()
-           edtProv.toString()
-           edtBirth.toString()
-           edtEmail.toString()
-           edtSikap.toString()
-           edtMateri.toString()
-           edtBacaan.toString()
-           edtHafalan.toString()
-           edtHadir.toString()
-           edtIzin.toString()
-           edtAlfa.toString()
-           edtKeterangan.toString()
-           edtUniv.toString()
-           edtProgdi.toString()
-           edtJurusan.toString()
-           edtGelar.toString()
-           //foto belum
-       }
+    private fun createSantri() {
+        val nis = binding.edtNis.text.toString()
+        val name = binding.edtName.text.toString()
+        val telp = binding.edtTelp.text.toString()
+        val address = binding.edtAddress.text.toString()
+        val city = binding.edtCity.text.toString()
+        val prov = binding.edtProv.text.toString()
+        val birth = binding.edtBirth.text.toString()
+        val email = binding.edtEmail.text.toString()
+        val foto = binding.imgPrev.toString()
+        val sikap = binding.edtSikap.text.toString()
+        val materi = binding.edtMateri.text.toString()
+        val bacaan = binding.edtBacaan.text.toString()
+        val hafalan = binding.edtHafalan.text.toString()
+        val hadir = binding.edtHadir.text.toString()
+        val izin = binding.edtIzin.text.toString()
+        val alfa = binding.edtAlfa.text.toString()
+        val ket = binding.edtKeterangan.text.toString()
+        val univ = binding.edtUniv.text.toString()
+        val progdi = binding.edtProgdi.text.toString()
+        val jurusan = binding.edtJurusan.text.toString()
+        val gelar = binding.edtGelar.text.toString()
+        val santri = SantriItem("", nis, name,telp, address, city, prov, birth, email, foto, sikap, materi, bacaan, hafalan, hadir,
+            izin, alfa, ket, univ, progdi, jurusan, gelar)
+        viewModel.createSantri(santri)
     }
 
     override fun onSupportNavigateUp(): Boolean {

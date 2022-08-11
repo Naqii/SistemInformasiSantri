@@ -2,21 +2,21 @@ package com.example.sis.data.api.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.sis.data.api.ApiClient
 import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.ApiService
 import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
-import okhttp3.internal.threadName
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Path
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MainRepository @Inject constructor(private val service: ApiService) {
 
+    //get All
     fun getSantri(): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
         val api = service.getSantri()
@@ -45,6 +45,7 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         return item
     }
 
+    //get By Id
     fun getSrcSantri(id: String): MutableLiveData<ApiResponse<SantriResponse>> {
         val item = MutableLiveData<ApiResponse<SantriResponse>>()
         val api = service.getSrcSantri(id)
@@ -70,49 +71,48 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         return item
     }
 
-    fun createSantri(santri: SantriItem, id: String): MutableLiveData<ApiResponse<SantriResponse>> {
-        val item = MutableLiveData<ApiResponse<SantriResponse>>()
-        val api = service.createSantri(
-            santri,
-            santri.id,
-            santri.nis,
-            santri.name,
-            santri.telp,
-            santri.address,
-            santri.city,
-            santri.province,
-            santri.birth,
-            santri.email,
-            santri.nilaiSikap,
-            santri.nilaiMateri,
-            santri.nilaiBacaan,
-            santri.nilaiHafalan,
-            santri.presensiHadir,
-            santri.presensiIzin,
-            santri.presensiAlfa,
-            santri.kampusUniv,
-            santri.kampusProgdi,
-            santri.kampusJurusan,
-            santri.kampusGelar,
-            santri.foto
-        )
-        api.enqueue(object : Callback<SantriResponse> {
+    fun createSantri(santri: SantriItem): MutableLiveData<ApiResponse<SantriItem>> {
+        val item = MutableLiveData<ApiResponse<SantriItem>>()
+        val api = service.createSantri(santri)
+        api.enqueue(object : Callback<SantriItem>{
             override fun onResponse(
-                call: Call<SantriResponse>,
-                response: Response<SantriResponse>
+                call: Call<SantriItem>,
+                response: Response<SantriItem>
             ) {
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
-                        item.value = ApiResponse.success(body)
-                    } else
-                        item.value = ApiResponse.error("No Response", SantriResponse())
+                        item.postValue(ApiResponse.success(body))
+                    } else {
+                        item.postValue(ApiResponse.error("No Response", SantriItem()))
+                    }
                 }
             }
 
-            override fun onFailure(call: Call<SantriResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SantriItem>, t: Throwable) {
                 t.message?.let { Log.d("Failure", it) }
             }
+
+        })
+        return item
+    }
+
+    //update
+    fun updateSantri(santri: SantriItem): MutableLiveData<ApiResponse<SantriResponse>> {
+        val item = MutableLiveData<ApiResponse<SantriResponse>>()
+        val api = santri.id?.let { service.updateSantri(it, santri) }
+        api?.enqueue(object : Callback<SantriResponse> {
+            override fun onResponse(
+                call: Call<SantriResponse>,
+                response: Response<SantriResponse>
+            ) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(call: Call<SantriResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
         })
         return item
     }
