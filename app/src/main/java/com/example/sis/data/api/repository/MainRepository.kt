@@ -7,6 +7,7 @@ import com.example.sis.data.api.ApiResponse
 import com.example.sis.data.api.ApiService
 import com.example.sis.data.model.SantriItem
 import com.example.sis.data.model.SantriResponse
+import com.example.sis.data.model.UploadResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -71,25 +72,25 @@ class MainRepository @Inject constructor(private val service: ApiService) {
         return item
     }
 
-    fun createSantri(santri: SantriItem): MutableLiveData<ApiResponse<SantriItem>> {
-        val item = MutableLiveData<ApiResponse<SantriItem>>()
+    fun createSantri(santri: SantriItem): MutableLiveData<ApiResponse<UploadResponse>> {
+        val item = MutableLiveData<ApiResponse<UploadResponse>>()
         val api = service.createSantri(santri)
-        api.enqueue(object : Callback<SantriItem>{
+        api.enqueue(object : Callback<UploadResponse>{
             override fun onResponse(
-                call: Call<SantriItem>,
-                response: Response<SantriItem>
+                call: Call<UploadResponse>,
+                response: Response<UploadResponse>
             ) {
                 if (response.isSuccessful) {
                     val body = response.body()
                     if (body != null) {
                         item.postValue(ApiResponse.success(body))
                     } else {
-                        item.postValue(ApiResponse.error("No Response", SantriItem()))
+                        item.postValue(ApiResponse.error("No Response", UploadResponse()))
                     }
                 }
             }
 
-            override fun onFailure(call: Call<SantriItem>, t: Throwable) {
+            override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
                 t.message?.let { Log.d("Failure", it) }
             }
 

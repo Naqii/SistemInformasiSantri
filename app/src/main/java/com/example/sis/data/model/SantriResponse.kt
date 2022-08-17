@@ -7,7 +7,11 @@ import kotlinx.parcelize.Parcelize
 
 data class SantriResponse(
 
-    val santri: ArrayList<SantriItem>? = null
+    val santri: ArrayList<SantriItem>? = null,
+
+    val status: Boolean? = null,
+    val error: Boolean? = null,
+    val messages: String? = null
 )
 
 @Parcelize
